@@ -13,3 +13,5 @@ python-import_modules/calculator_1.py
 python-import_modules/__pycache__/calculator_1.cpython-310.pyc
 python-import_modules/__pycache__/variable_load_5.cpython-310.pyc
 python-import_modules/variable_load_5.py
+python-data_structures/0-main.py
+python-data_structures/__pycache__/0-print_list_integer.cpython-310.pyc
