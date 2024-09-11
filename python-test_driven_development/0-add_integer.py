@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines an integer addition function."""
 
+
 def add_integer(a, b=98):
     """
     Adds two integers a and b. If b is not provided, it defaults to 98.
