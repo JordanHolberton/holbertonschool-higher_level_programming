@@ -7,7 +7,7 @@ class Square:
         """
         initialize a new square
 
-    
+
         Args:
         self (int): Size of the square
 
