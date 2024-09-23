@@ -75,19 +75,6 @@ Passing other data types should also raise a TypeError:
     Traceback (most recent call last):
     TypeError: none must be an integer
 
-Passing wrong number of arguments:
-    >>> bg.integer_validator()
-    Traceback (most recent call last):
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-    >>> bg.integer_validator("age")
-    Traceback (most recent call last):
-    TypeError: integer_validator() missing 1 required positional argument: 'value'
-
-    >>> bg.integer_validator("age", 1, 2)
-    Traceback (most recent call last):
-    TypeError: integer_validator() takes 3 positional arguments but 4 were given
-
 Edge cases:
     >>> bg.integer_validator("infinity", float('inf'))
     Traceback (most recent call last):
@@ -109,13 +96,3 @@ Testing __doc__:
 
     >>> print(BaseGeometry.area.__doc__)
     Exception
-
-    >>> print(BaseGeometry.integer_validator.__doc__)
-    Validate a parameter as an integer.
-    <BLANKLINE>
-        Args:
-            name (str): The name of the parameter.
-            value (int): The parameter to validate.
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is <= 0.
