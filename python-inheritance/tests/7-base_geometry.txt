@@ -1,0 +1,76 @@
+===========================
+How to Use 7-base_geometry.py
+===========================
+
+This module defines a base geometry class BaseGeometry.
+
+Usage
+=====
+
+Importing the class from the module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now we can create a BaseGeometry instance:
+    >>> bg = BaseGeometry()
+
+The class has two methods:
+
+1. area(self)
+-------------
+
+This method is not implemented and should raise an Exception:
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+2. integer_validator(self, name, value)
+---------------------------------------
+
+This method validates the input:
+
+Passing valid integers should not raise any exceptions:
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+Passing non-integer types should raise a TypeError:
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ValueError: distance must be greater than 0
+
+Passing other data types should also raise a TypeError:
+    >>> bg.integer_validator("average", 7.8)
+    Traceback (most recent call last):
+    TypeError: average must be an integer
+
+    >>> bg.integer_validator("list", [1, 2, 3])
+    Traceback (most recent call last):
+    TypeError: list must be an integer
+
+    >>> bg.integer_validator("dict", {"key": "value"})
+    Traceback (most recent call last):
+    TypeError: dict must be an integer
+
+    >>> bg.integer_validator("tuple", (1, 2))
+    Traceback (most recent call last):
+    TypeError: tuple must be an integer
+
+    >>> bg.integer_validator("set", {1, 2, 3})
+    Traceback (most recent call last):
+    TypeError: set must be an integer
+
+    >>> bg.integer_validator("bool", True)
+    Traceback (most recent call last):
+    TypeError: bool must be an integer
+
+    >>> bg.integer_validator("none", None)
+    Traceback (most recent call last):
+    TypeError: none must be an integer
