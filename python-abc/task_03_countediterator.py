@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Create an iterator"""
+
 
 class CountedIterator:
     """Iterator class that counts the number of items iterated over."""

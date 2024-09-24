@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Create a verboselist"""
+
 
 class VerboseList(list):
 
