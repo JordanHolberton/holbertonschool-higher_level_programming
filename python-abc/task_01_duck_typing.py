@@ -19,7 +19,7 @@ class Shape(ABC):
 
 class Circle(Shape):
 
-    def __init__(self, radius):
+    def __init__(self, abs(radius)):
         self.radius = radius
 
     def area(self):
