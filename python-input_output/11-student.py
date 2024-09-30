@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Student."""
 
+
 class Student:
     """Represent a student."""
 
@@ -25,12 +26,10 @@ class Student:
         Args:
             attrs (list): (Optional) The attributes to represent.
         """
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
-            # Return only the attributes listed in attrs
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
-        else:
-            # Return all attributes
-            return self.__dict__
+        if (type(attrs) is list and
+                all(type(ele) is str for ele in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
 
     def reload_from_json(self, json):
         """Replace all attributes of the Student.
