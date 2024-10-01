@@ -1,7 +1,8 @@
 import pickle
 
+
 class CustomObject:
-    """A class representing a custom object with attributes name, age, and is_student."""
+    """custom object with attributes name, age, and is_student."""
 
     def __init__(self, name, age, is_student):
         """Initialize the CustomObject instance.
@@ -42,7 +43,7 @@ class CustomObject:
             filename (str): The file from which to deserialize the object.
 
         Returns:
-            CustomObject or None: The deserialized object, or None if deserialization fails.
+            CustomObject or None
         """
         try:
             with open(filename, 'rb') as file:
