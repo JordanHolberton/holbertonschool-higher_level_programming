@@ -31,7 +31,6 @@ class CustomObject:
         try:
             with open(filename, 'wb') as file:
                 pickle.dump(self, file)
-            print(f"Object serialized and saved to {filename}.")
         except Exception as e:
             print(f"Failed to serialize object: {e}")
 
