@@ -1,26 +1,25 @@
-#!/usr/bin/env python3
 import pickle
 
 class CustomObject:
-    """Add class represent name, age and is_student"""
+    """A class representing a custom object with attributes name, age, and is_student."""
 
     def __init__(self, name, age, is_student):
-        """initialize a new CustomObject instance
+        """Initialize the CustomObject instance.
 
         Args:
-            name (str): name of the object
-            age (int): age of the object
-            is_student (boolean): if the person is a student
+            name (str): The name of the person.
+            age (int): The age of the person.
+            is_student (bool): Whether the person is a student or not.
         """
         self.name = name
         self.age = age
         self.is_student = is_student
 
-    def display(self)
-        """Print all arguments in readable format"""
-        print(f."Name: {self.name}")
-        print(f."Age: {self.age}")
-        print(f."Is Student: {self.is_student}")
+    def display(self):
+        """Display the attributes of the object in a readable format."""
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+        print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
         """Serialize the current object and save it to a file.
