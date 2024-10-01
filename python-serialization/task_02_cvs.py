@@ -1,6 +1,7 @@
 import csv
 import json
 
+
 def convert_csv_to_json(csv_filename):
     """Convert CSV file to JSON and save it as data.json.
 
