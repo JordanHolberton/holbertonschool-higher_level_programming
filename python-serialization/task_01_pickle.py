@@ -32,7 +32,7 @@ class CustomObject:
             with open(filename, 'wb') as file:
                 pickle.dump(self, file)
         except Exception as e:
-            print(f"Failed to serialize object: {e}")
+            return None
 
     @classmethod
     def deserialize(cls, filename):
