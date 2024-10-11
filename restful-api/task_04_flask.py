@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import json
 
 app = Flask(__name__)
 
@@ -105,7 +106,7 @@ def add_user():
 
     # Add the new user to the users dictionary
     users[username] = {
-        "username": username,
+        "username": username.get("username"),
         "name": new_user_data.get("name"),
         "age": new_user_data.get("age"),
         "city": new_user_data.get("city")
