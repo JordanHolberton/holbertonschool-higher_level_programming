@@ -80,7 +80,7 @@ def login():
             "role": user['role']
         })
         return jsonify({
-            "message": "Access Granted", "access_token": acces_token
+            "message": "Access Granted", "access_token": access_token
             }), 200
 
     # Return unauthorized response if credentials are invalid
