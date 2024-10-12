@@ -8,7 +8,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 app = Flask(__name__)
 
 # JWT secret key for token generation and validation
-app.config['JWT_SECRET_KEY'] = 'jemmerdeAnzo'
+app.config['JWT_SECRET_KEY'] = "123456"
 
 # Initialize JWT manager with app
 jwt = JWTManager(app)
@@ -75,13 +75,14 @@ def login():
     # Check if user exists and password is correct
     if user and check_password_hash(user['password'], password):
         # Create JWT access token with user identity and role
-        acces_token = create_access_token(identity={
+        access_token = create_access_token(identity={
             "username": username,
             "role": user['role']
         })
         return jsonify({
-            "message": "Access Granted", "access_token": access_token
-            }), 200
+            "message": "Access Granted", 
+            "access_token": access_token
+        }), 200
 
     # Return unauthorized response if credentials are invalid
     return jsonify({"error": "Invalid credentials"}), 401
