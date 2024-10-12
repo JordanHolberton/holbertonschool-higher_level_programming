@@ -17,18 +17,7 @@ jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
 # In-memory users' data with hashed passwords and roles
-users = {
-    "user1": {
-        "username": "user1",
-        "password": generate_password_hash("hello"),
-        "role": "user"
-    },
-    "admin1": {
-        "username": "admin1",
-        "password": generate_password_hash("bye"),
-        "role": "admin"
-    }
-}
+users = {}
 
 
 @auth.verify_password
