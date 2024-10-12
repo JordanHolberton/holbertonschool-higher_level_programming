@@ -1,14 +1,14 @@
 from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token,
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 # Initialize Flask application
 app = Flask(__name__)
 
 # JWT secret key for token generation and validation
-app.config['JWT_SECRET_KEY'] = "123456"
+app.config['JWT_SECRET_KEY'] = "123456azerty"
 
 # Initialize JWT manager with app
 jwt = JWTManager(app)
@@ -25,7 +25,7 @@ users = {
     },
     "admin1": {
         "username": "admin1",
-        "password": generate_password_hash("bye"),  # Fixed here
+        "password": generate_password_hash("bye"),
         "role": "admin"
     }
 }
@@ -49,6 +49,10 @@ def basic_protected():
 def login():
     username = request.json.get('username')
     password = request.json.get('password')
+
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 401
+
     user = users.get(username)
 
     if user and check_password_hash(user['password'], password):
