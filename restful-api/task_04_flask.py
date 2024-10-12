@@ -61,7 +61,7 @@ def add_user():
 
     # Add the new user to the users dictionary
     users[username] = {
-        "username": username,  # Corrected here to use 'username' directly
+        "username": new_user_data.get('username'),  # Corrected here to use 'username' directly
         "name": new_user_data.get("name"),
         "age": new_user_data.get("age"),
         "city": new_user_data.get("city")
@@ -71,4 +71,4 @@ def add_user():
 
 if __name__ == "__main__":
     # Run the Flask application
-    app.run(debug=True)
+    app.run()
