@@ -10,12 +10,14 @@ users = {
     "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
 }
 
+
 @app.route('/')
 def home():
     """
     Root endpoint to return a welcome message.
     """
     return "Welcome to the Flask API!"
+
 
 @app.route('/data')
 def get_usernames():
@@ -25,12 +27,14 @@ def get_usernames():
     usernames = list(users.keys())
     return jsonify(usernames)
 
+
 @app.route('/status')
 def status():
     """
     Endpoint to check the status of the API.
     """
     return "OK"
+
 
 @app.route('/users/<username>')
 def get_user(username):
@@ -42,6 +46,10 @@ def get_user(username):
         return jsonify(user)
     else:
         return jsonify({"error": "User not found"}), 404
+
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -61,13 +69,14 @@ def add_user():
 
     # Add the new user to the users dictionary
     users[username] = {
-        "username": new_user_data.get('username'),  # Corrected here to use 'username' directly
+        "username": new_user_data.get('username'),
         "name": new_user_data.get("name"),
         "age": new_user_data.get("age"),
         "city": new_user_data.get("city")
     }
 
     return jsonify({"message": "User added", "user": users[username]}), 201
+
 
 if __name__ == "__main__":
     # Run the Flask application
