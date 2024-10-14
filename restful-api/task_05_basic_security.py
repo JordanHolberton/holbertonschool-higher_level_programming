@@ -39,6 +39,12 @@ def verify_password(username, password):
     return None
 
 
+# Public route to display a welcome message
+@app.route("/")
+def home():
+    return "Welcome to the Flask API!"
+
+
 @app.route('/basic-protected')
 @auth.login_required
 def basic_protected():
