@@ -93,7 +93,7 @@ def admin_only():
     # Check if the user's role is 'admin'
     if users[current_user]['role'] != 'admin':
         return jsonify({"error": "Admin access required"}), 403
-    return jsonify({"message": "Admin Access: Granted"}), 200
+    return "message": "Admin Access: Granted"
 
 
 # Error handlers for various JWT errors
