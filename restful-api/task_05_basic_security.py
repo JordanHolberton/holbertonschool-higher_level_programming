@@ -10,6 +10,7 @@ from flask_jwt_extended import (
     JWTManager,
 )
 
+
 # Dictionary to store user data with hashed passwords
 users = {
     "user1": {
@@ -23,6 +24,7 @@ users = {
         "role": "admin"
     }
 }
+
 
 # Initialize Flask app and HTTPBasicAuth
 app = Flask(__name__)
