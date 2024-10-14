@@ -10,7 +10,6 @@ from flask_jwt_extended import (
     JWTManager,
 )
 
-
 # Dictionary to store user data with hashed passwords
 users = {
     "user1": {
@@ -25,7 +24,6 @@ users = {
     }
 }
 
-
 # Initialize Flask app and HTTPBasicAuth
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -34,6 +32,7 @@ auth = HTTPBasicAuth()
 # Function to verify password for basic authentication
 @auth.verify_password
 def verify_password(username, password):
+    """Verify password for basic authentication."""
     user = users.get(username)
     if user and check_password_hash(user["password"], password):
         return username
@@ -43,14 +42,25 @@ def verify_password(username, password):
 # Public route to display a welcome message
 @app.route("/")
 def home():
-    return "Welcome to the Flask API!"
+    """Welcome route providing API information."""
+    return jsonify({
+        "message": "Welcome to the Flask API with Authentication!",
+        "version": "1.0",
+        "endpoints": {
+            "/login": "POST - Obtain JWT token",
+            "/basic-protected": "GET - Test basic authentication",
+            "/jwt-protected": "GET - Test JWT authentication",
+            "/admin-only": "GET - Admin access (JWT + admin role required)"
+        }
+    }), 200
 
 
 # Protected route that requires basic authentication
 @app.route("/basic-protected")
 @auth.login_required
 def basic_protected():
-    return "Basic Auth: Access Granted"
+    """Route protected by basic authentication."""
+    return jsonify({"message": "Basic Auth: Access Granted"}), 200
 
 
 # Set the secret key for JWT
@@ -61,6 +71,7 @@ jwt = JWTManager(app)
 # Route to handle user login and return a JWT
 @app.route("/login", methods=["POST"])
 def login():
+    """Login route to obtain JWT token."""
     username = request.json.get("username", None)
     password = request.json.get("password", None)
     if not username or not password:
@@ -77,20 +88,18 @@ def login():
 @app.route("/jwt-protected")
 @jwt_required()
 def jwt_protected():
-    return "JWT Auth: Access Granted"
+    """Route protected by JWT authentication."""
+    return jsonify({"message": "JWT Auth: Access Granted"}), 200
 
 
 # Protected route with role-based access control for admin only
 @app.route("/admin-only")
 @jwt_required()
 def admin_only():
+    """Admin-only route protected by JWT and role check."""
     current_user = get_jwt_identity()
-
-    # Check if the user exists in the users dictionary
     if current_user not in users:
         return jsonify({"error": "User not found"}), 404
-
-    # Check if the user's role is 'admin'
     if users[current_user]['role'] != 'admin':
         return jsonify({"error": "Admin access required"}), 403
     return jsonify({"message": "Admin Access: Granted"}), 200
@@ -124,4 +133,4 @@ def handle_needs_fresh_token_error(err):
 
 # Main entry point to run the Flask application
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
