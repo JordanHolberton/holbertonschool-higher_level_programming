@@ -1,4 +1,4 @@
---  12. No cheating
+-- This is a comment
 UPDATE second_table;
-SET score = 10
+SET score = 10;
 WHERE name = Bob;
