@@ -1,2 +1,2 @@
 -- Content: Insert a new row into the first_table
-INSERT TO first_table ('id', 'name') VALUES (89, 'Best School');
+INSERT INTO first_table (id, name) VALUES (89, 'Best School');
