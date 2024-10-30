@@ -1,10 +1,3 @@
--- Order all the cities in the state of California by the cities.id value.
-SELECT citiesid, cities.name;
-FROM cities
-WHERE cities.state_id = (
-    SELECT id
-    FROM states
-    WHERE name = 'California'
-    LIMIT 1
-)
-ORDER BY cities.id ASC;
+-- lists all the cities of California that can be found in the database hbtn_0d_usa
+SET @california_id := (SELECT id FROM states WHERE name = 'California');
+SELECT id, name FROM cities WHERE state_id = @california_id ORDER BY id ASC;
