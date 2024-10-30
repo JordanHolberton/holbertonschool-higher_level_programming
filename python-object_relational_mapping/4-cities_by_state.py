@@ -20,7 +20,6 @@ if __name__ == "__main__":
         JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC")
     states = cursor.fetchall()
     for state in states:
-        if state[1][0] == 'N':
-            print(state)
+        print(state)
     cursor.close()
     db.close()
