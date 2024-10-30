@@ -1,6 +1,6 @@
 -- Order all the cities in the state of California by the cities.id value.
 SELECT citiesid, cities.name;
-FROM states
+FROM cities
 WHERE cities.state_id = (
     SELECT id
     FROM states
