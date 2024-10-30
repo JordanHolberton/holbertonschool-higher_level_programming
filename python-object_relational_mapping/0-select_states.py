@@ -3,7 +3,15 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    """ Lists all states from the database hbtn_0e_0_usa """
+    """ Lists all states from the database hbtn_0e_0_usa
+        Usage: ./0-select_states.py <mysql username>
+        <mysql password> <database name>
+
+        Arguments:
+            mysql username: username to connect the mySQL database
+            mysql password: password to connect the mySQL database
+            database name: name of the database to connect
+        """
     # Connect to the MySQL database
     db = MySQLdb.connect(
         host="localhost",
