@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
-""" script that deletes all State objects with a name containing 
-the letter a from the database hbtn_0e_6_usa"""
+"""
+script that deletes all State objects with a name containing
+the letter a from the database hbtn_0e_6_usa
+"""
 
 import sys
 from model_state import State
@@ -15,7 +17,7 @@ if __name__ == "__main__":
     state_id = 2
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(username, password, database))
-    
+
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).filter(State.name.like('%a%')).all()
