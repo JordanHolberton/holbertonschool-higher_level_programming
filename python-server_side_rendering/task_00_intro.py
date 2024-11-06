@@ -1,11 +1,14 @@
 import os
+""" Task 0: Introduction to Server-Side Rendering """
+
 
 def generate_invitations(template, attendees):
 
     if not isinstance(template, str):
         raise ValueError("Template must be a string")
 
-    if not isinstance(attendees, list) or not all(isinstance(item, dict) for item in attendees):
+    if not isinstance(attendees, list) or not \
+            all(isinstance(item, dict) for item in attendees):
         raise ValueError("Attendees must be a list")
 
     if template.strip() == "":
