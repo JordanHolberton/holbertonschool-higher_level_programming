@@ -26,5 +26,13 @@ def generate_invitations(template, attendees):
                 value = "N/A"
             output_content = output_content.replace(placeholder, value)
         output_filename = f"output_{i}.txt"
+
+        if os.path.exists(output_filename):
+            print(
+                f"Warning: {output_filename}\
+                already exists. Skipping file creation."
+                  )
+            continue
+
         with open(output_filename, 'w') as output_file:
             output_file.write(output_content)
